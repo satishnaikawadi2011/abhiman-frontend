@@ -1,7 +1,6 @@
 import { Image, Linking, ScrollView, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import { Paragraph, Subheading, Title, Button } from 'react-native-paper';
-import { Colors } from '../constants/colors';
 import LinkButton from '../components/LinkButton';
 
 const LGBTQScreen = () => {
