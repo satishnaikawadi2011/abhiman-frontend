@@ -49,7 +49,8 @@ const styles = StyleSheet.create({
 			height: 200,
 			backgroundColor: '#000',
 			borderRadius: 20,
-			margin: 20
+			marginHorizontal: 20,
+			marginVertical: 10
 		},
 	text:
 		{

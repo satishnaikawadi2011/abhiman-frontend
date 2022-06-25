@@ -1,7 +1,7 @@
 import { Image, Linking, ScrollView, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import { Paragraph, Subheading, Title, Button } from 'react-native-paper';
-import LinkButton from '../components/LinkButton';
+import LinkButton from '../../components/LinkButton';
 
 const EmploymentScreen = () => {
 	return (

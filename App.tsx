@@ -1,9 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import ResourceCard from './src/components/ResourceCard';
+import ResourcesScreen from './src/screens/ResourcesScreen';
 
 export default function App() {
-	return <ResourceCard title="Resource" />;
+	return <ResourcesScreen />;
 	// return (
 	//   <View style={styles.container}>
 	//     <Text>Hello World!</Text>

@@ -1,7 +1,7 @@
 import { Image, Linking, ScrollView, StyleSheet, View } from 'react-native';
 import React from 'react';
 import { Paragraph, Subheading, Title } from 'react-native-paper';
-import LinkButton from '../components/LinkButton';
+import LinkButton from '../../components/LinkButton';
 
 const VoiceScreen = () => {
 	return (
