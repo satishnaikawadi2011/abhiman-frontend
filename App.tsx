@@ -7,6 +7,8 @@ import WelcomeScreen from './src/screens/WelcomeScreen';
 import { useEffect } from 'react';
 import { firebaseConfig } from './config';
 import AddStoryScreen from './src/screens/AddStoryScreen';
+import { Provider as PaperProvider } from 'react-native-paper';
+import { CustomDefaultTheme } from './src/theme';
 
 // Initialize Firebase
 // const app = firebase.initializeApp(firebaseConfig);
@@ -24,7 +26,11 @@ export default function App() {
 	// 	func();
 	// }, []);
 
-	return <AddStoryScreen />;
+	return (
+		<PaperProvider theme={CustomDefaultTheme}>
+			<AddStoryScreen />
+		</PaperProvider>
+	);
 	// return (
 	//   <View style={styles.container}>
 	//     <Text>Hello World!</Text>
