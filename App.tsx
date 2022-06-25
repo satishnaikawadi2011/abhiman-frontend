@@ -1,10 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import PrideAnimation from './src/animations/Pride';
 import ResourceCard from './src/components/ResourceCard';
 import ResourcesScreen from './src/screens/ResourcesScreen';
 
 export default function App() {
-	return <ResourcesScreen />;
+	return <PrideAnimation />;
 	// return (
 	//   <View style={styles.container}>
 	//     <Text>Hello World!</Text>
