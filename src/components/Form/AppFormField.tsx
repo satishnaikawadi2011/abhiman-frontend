@@ -1,9 +1,9 @@
 import { useFormikContext } from 'formik';
 import React from 'react';
 import { StyleSheet, TextInputProps, View } from 'react-native';
-import AppTextInput from '../app/AppTextInput';
+import AppTextInput from '../App/AppTextInput';
 import AppErrorMessage from './AppErrorMessage';
-import { InputProps } from '../app/AppTextInput';
+import { InputProps } from '../App/AppTextInput';
 
 interface FormFieldProps {
 	name: string;
