@@ -1,6 +1,7 @@
 import { Image, Linking, ScrollView, StyleSheet, View } from 'react-native';
 import React from 'react';
-import { Paragraph, Subheading, Title, Button } from 'react-native-paper';
+import { Paragraph, Subheading, Title } from 'react-native-paper';
+import LinkButton from '../components/LinkButton';
 
 const VoiceScreen = () => {
 	return (
@@ -12,10 +13,8 @@ const VoiceScreen = () => {
 						<View style={styles.subContainer}>
 							<Title style={styles.title}>How Can I Find My Voice?</Title>
 						</View>
-						{/* <Divider style={{ height: 0.2, backgroundColor: theme.colors.placeholder }} /> */}
 						<View style={{ flex: 1 }}>
 							<View style={styles.subContainer}>
-								{/* <Title>Details</Title> */}
 								<Subheading style={styles.subHeading}>
 									Speak Your Mind, Even If Your Voice Shakes
 								</Subheading>
@@ -40,22 +39,21 @@ const VoiceScreen = () => {
 						</View>
 						<View style={{ flex: 1 }}>
 							<View style={styles.subContainer}>
-								<Button mode="text" onPress={() => Linking.openURL('https://www.inhersight.com/blog')}>
+								<LinkButton onPress={() => Linking.openURL('https://www.inhersight.com/blog')}>
 									InHerSight - Career Resources
-								</Button>
-								<Button mode="text" onPress={() => Linking.openURL('https://chicktech.org/')}>
+								</LinkButton>
+								<LinkButton onPress={() => Linking.openURL('https://chicktech.org/')}>
 									ChickTech - Support For Marginalized People
-								</Button>
-								<Button mode="text" onPress={() => Linking.openURL('https://www.mothercoders.org/')}>
+								</LinkButton>
+								<LinkButton onPress={() => Linking.openURL('https://www.mothercoders.org/')}>
 									[MotherCoders] - Helping Those With Kids Thrive In Tech
-								</Button>
-								<Button
-									mode="text"
+								</LinkButton>
+								<LinkButton
 									onPress={() =>
 										Linking.openURL('https://womenignitingchange.com/blog/how-to-find-your-voice/')}
 								>
 									Women Igniting Change - How to Find Your Voice
-								</Button>
+								</LinkButton>
 							</View>
 						</View>
 					</View>
