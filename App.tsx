@@ -4,10 +4,11 @@ import BIPOCScreen from './src/screens/BIPOCScreen';
 import DisabilityScreen from './src/screens/DisabilityScreen';
 import ImposterSyndromeScreen from './src/screens/ImposterSyndromeScreen';
 import LGBTQScreen from './src/screens/LGBTQScreen';
+import MarginalizationScreen from './src/screens/MarginalizationScreen';
 import VoiceScreen from './src/screens/VoiceScreen';
 
 export default function App() {
-	return <BIPOCScreen />;
+	return <MarginalizationScreen />;
 	// return (
 	//   <View style={styles.container}>
 	//     <Text>Hello World!</Text>
