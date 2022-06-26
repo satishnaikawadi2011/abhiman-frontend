@@ -3,7 +3,7 @@ import { defaltNavOptions } from './options/defaultNavigationOptions';
 import React from 'react';
 import { Story } from '../models/Story';
 import HomeTabNavigator from './HomeTabNavigator';
-import StoryDetailScreen from '../screens/StoryDetailScreen';
+import StoryDetailScreen, { screenOptions as storyDetailScreenOptions } from '../screens/StoryDetailScreen';
 import FavouritesScreen from '../screens/FavouritesScreen';
 import WelcomeScreen from '../screens/WelcomeScreen';
 
@@ -28,7 +28,7 @@ const AppNavigator = () => {
 			<StoriesStackNavigator.Screen
 				name="StoryDetail"
 				component={StoryDetailScreen}
-				// options={ProductDetailScreenOptions}
+				options={storyDetailScreenOptions}
 			/>
 			<StoriesStackNavigator.Screen name="Favourites" component={FavouritesScreen} />
 		</StoriesStackNavigator.Navigator>

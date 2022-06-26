@@ -21,7 +21,7 @@ const StoryCard: React.FC<IProps> = ({ story }) => {
 				{
 					isInFavourites ? <MaterialCommunityIcons
 						color={Colors.primary}
-						size={35}
+						size={45}
 						name="heart"
 						onPress={() => {
 							removeFromFavourites(story.id);
@@ -30,7 +30,7 @@ const StoryCard: React.FC<IProps> = ({ story }) => {
 					/> :
 					<MaterialCommunityIcons
 						color={Colors.primary}
-						size={35}
+						size={45}
 						name="heart-outline"
 						onPress={() => {
 							addToFavourites(story);
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
 	title: { textTransform: 'capitalize', textAlign: 'center', color: '#fff', fontSize: 18, fontWeight: '600' },
 	titleContainer:
 		{
-			backgroundColor: 'rgba(0,0,0,0.5)',
+			backgroundColor: 'rgba(0,0,0,0.6)',
 			minHeight: 70,
 			zIndex: 100,
 			position: 'absolute',
@@ -73,5 +73,6 @@ const styles = StyleSheet.create({
 			alignItems: 'center',
 			padding: 10
 		},
-	iconContainer: { position: 'absolute', top: 0, right: 0, padding: 20 }
+	iconContainer:
+		{ position: 'absolute', top: 0, right: 0, padding: 10, backgroundColor: 'rgba(0,0,0,0.6)', borderRadius: 10 }
 });
