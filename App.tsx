@@ -1,50 +1,60 @@
-import { StyleSheet, Text, View } from 'react-native';
-import * as firebase from 'firebase/app';
-import { getFirestore, collection, getDocs } from 'firebase/firestore';
+import { useFonts } from 'expo-font';
+import React, { useEffect, useState } from 'react';
+import AppLoading from 'expo-app-loading';
+import * as SplashScreen from 'expo-splash-screen';
 
-import PrideAnimation from './src/animations/Pride';
-import WelcomeScreen from './src/screens/WelcomeScreen';
-import { useEffect } from 'react';
-import { firebaseConfig } from './config';
-import AddStoryScreen from './src/screens/AddStoryScreen';
+import AppNavigationContainer from './src/navigation/AppNavigationContainer';
+import { useThemeStore } from './src/store/theme';
 import { Provider as PaperProvider } from 'react-native-paper';
-import { CustomDefaultTheme } from './src/theme';
-
-// Initialize Firebase
-// const app = firebase.initializeApp(firebaseConfig);
-// const db = getFirestore(app);
+import { useFavouritesStore } from './src/store/favourites';
+import getDataFromAsyncStorageOnStart from './src/utils/getDataFromAsyncStorageOnStart';
+import { CustomDarkTheme, CustomDefaultTheme } from './src/theme';
 
 export default function App() {
-	// useEffect(() => {
-	// 	const func = async () => {
-	// 		const querySnapshot = await getDocs(collection(db, 'stories'));
-	// 		querySnapshot.forEach((doc) => {
-	// 			console.log(doc.data());
-	// 		});
-	// 	};
+	const [
+		isReady,
+		setIsReady
+	] = useState(false);
+	const { setStories: b, setStoryIds: c } = useFavouritesStore();
+	const { isDarkTheme, setIsDarkTheme: a } = useThemeStore();
+	const theme =
+		isDarkTheme ? CustomDarkTheme :
+		CustomDefaultTheme;
 
-	// 	func();
-	// }, []);
-
+	useEffect(
+		() => {
+			launch();
+		},
+		[
+			isReady
+		]
+	);
+	const launch = async () => {
+		if (isReady) {
+			setTimeout(() => SplashScreen.hideAsync(), 2000);
+		}
+	};
+	const [
+		loaded
+	] = useFonts({
+		UbuntuRegular: require('./assets/fonts/Ubuntu-Regular.ttf'),
+		UbuntuLight: require('./assets/fonts/Ubuntu-Light.ttf'),
+		UbuntuMedium: require('./assets/fonts/Ubuntu-Medium.ttf'),
+		UbuntuBold: require('./assets/fonts/Ubuntu-Bold.ttf')
+	});
+	if (!loaded || !isReady) {
+		return (
+			<AppLoading
+				autoHideSplash={false}
+				onError={(error) => console.log('Error from AppLoading', error)}
+				startAsync={() => getDataFromAsyncStorageOnStart(a, b, c)}
+				onFinish={() => setIsReady(true)}
+			/>
+		);
+	}
 	return (
-		<PaperProvider theme={CustomDefaultTheme}>
-			<AddStoryScreen />
+		<PaperProvider theme={theme}>
+			<AppNavigationContainer />
 		</PaperProvider>
 	);
-	// return (
-	//   <View style={styles.container}>
-	//     <Text>Hello World!</Text>
-	//     <StatusBar style="auto" />
-	//   </View>
-	// );
 }
-
-const styles = StyleSheet.create({
-	container:
-		{
-			flex: 1,
-			backgroundColor: '#fff',
-			alignItems: 'center',
-			justifyContent: 'center'
-		}
-});
