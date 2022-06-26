@@ -18,19 +18,4 @@ const PrideAnimation: React.FC<Props> = ({}) => {
 
 export default PrideAnimation;
 
-const styles = StyleSheet.create({
-	container:
-		{
-			flex: 1,
-			justifyContent: 'center',
-			alignItems: 'center',
-			marginHorizontal: 20
-		},
-	message:
-		{
-			fontWeight: 'bold',
-			fontSize: 20,
-			marginVertical: 10,
-			textAlign: 'center'
-		}
-});
+const styles = StyleSheet.create({});

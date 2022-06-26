@@ -8,7 +8,7 @@ const GetPaidScreen = () => {
 		<View style={{ flex: 1 }}>
 			<View style={{ flex: 1 }}>
 				<ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-					<Image style={styles.image} source={require('../../assets/images/negotiation.jpg')} />
+					<Image style={styles.image} source={require('../../../assets/images/negotiation.jpg')} />
 					<View style={styles.container}>
 						<View style={styles.subContainer}>
 							<Title style={styles.title}>GET PAID</Title>

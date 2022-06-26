@@ -1,7 +1,7 @@
 import { DarkTheme as PaperDarkTheme, DefaultTheme as PaperDefaultTheme, configureFonts } from 'react-native-paper';
 import { DarkTheme as NavigationDarkTheme, DefaultTheme as NavigationDefaultTheme } from '@react-navigation/native';
 import { Colors } from '../constants/colors';
-// import { fontConfig } from './fontConfig';
+import { fontConfig } from './fontConfig';
 
 export const CustomDefaultTheme = {
 	...NavigationDefaultTheme,
@@ -12,8 +12,8 @@ export const CustomDefaultTheme = {
 			...PaperDefaultTheme.colors,
 			primary: Colors.primary,
 			accent: Colors.accent
-		}
-	// fonts: configureFonts(fontConfig)
+		},
+	fonts: configureFonts(fontConfig)
 };
 
 export const CustomDarkTheme = {
@@ -25,6 +25,6 @@ export const CustomDarkTheme = {
 			...PaperDarkTheme.colors,
 			primary: Colors.primary,
 			accent: Colors.accent
-		}
-	// fonts: configureFonts(fontConfig)
+		},
+	fonts: configureFonts(fontConfig)
 };

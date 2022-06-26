@@ -23,7 +23,7 @@ const AppNavigator = () => {
 			<StoriesStackNavigator.Screen
 				name="StoriesList"
 				component={HomeTabNavigator}
-				// options={ProductListScreenOptions}
+				options={{ headerShown: false }}
 			/>
 			<StoriesStackNavigator.Screen
 				name="StoryDetail"

@@ -8,7 +8,7 @@ const VoiceScreen = () => {
 		<View style={{ flex: 1 }}>
 			<View style={{ flex: 1 }}>
 				<ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-					<Image style={styles.image} source={require('../../assets/images/voice.jpg')} />
+					<Image style={styles.image} source={require('../../../assets/images/voice.jpg')} />
 					<View style={styles.container}>
 						<View style={styles.subContainer}>
 							<Title style={styles.title}>How Can I Find My Voice?</Title>

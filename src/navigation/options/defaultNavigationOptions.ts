@@ -11,11 +11,11 @@ export const defaltNavOptions = {
 		},
 	headerBackTitleStyle:
 		{
-			// fontFamily: 'Ubuntu'
+			fontFamily: 'Ubuntu'
 		},
 	headerTitleStyle:
 		{
-			// fontFamily: 'UbuntuBold'
+			fontFamily: 'UbuntuBold'
 		},
 	headerTintColor:
 

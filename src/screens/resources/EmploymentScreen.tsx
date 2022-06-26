@@ -8,7 +8,7 @@ const EmploymentScreen = () => {
 		<View style={{ flex: 1 }}>
 			<View style={{ flex: 1 }}>
 				<ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-					<Image style={styles.image} source={require('../../assets/images/employment.jpg')} />
+					<Image style={styles.image} source={require('../../../assets/images/employment.jpg')} />
 					<View style={styles.container}>
 						<View style={styles.subContainer}>
 							<Title style={styles.title}>
