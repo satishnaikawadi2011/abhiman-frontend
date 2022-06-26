@@ -58,6 +58,8 @@ const StoriesListScreen: React.FC<StoriesLisScreenProps> = ({ navigation, route 
 		<FlatList
 			keyExtractor={(item) => item.id}
 			data={stories}
+			onRefresh={request}
+			refreshing={loading}
 			renderItem={({ item }) => {
 				return <StoryCard story={item} />;
 			}}

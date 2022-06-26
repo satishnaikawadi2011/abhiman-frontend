@@ -1,24 +1,27 @@
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import ResourceCard from '../components/ResourceCard';
+import { useNavigation } from '@react-navigation/native';
 
 interface IResource {
 	title: string;
 	id: string;
+	name: string;
 }
 
 const resources: IResource[] = [
-	{ title: 'Find Your Voice', id: 'voice' },
-	{ title: 'Imposter Syndrome', id: 'imp_syn' },
-	{ title: 'Get Paid', id: 'paid' },
-	{ title: 'LGBTQ In Tech', id: 'lgbtq' },
-	{ title: 'Disability Tech', id: 'disability' },
-	{ title: 'BIPOC', id: 'bipoc' },
-	{ title: 'Marginalized Women', id: 'minority' },
-	{ title: 'Finding Employment', id: 'employment' }
+	{ title: 'Find Your Voice', id: 'voice', name: 'Voice' },
+	{ title: 'Imposter Syndrome', id: 'imp_syn', name: 'ImposterSyndrome' },
+	{ title: 'Get Paid', id: 'paid', name: 'GetPaid' },
+	{ title: 'LGBTQ In Tech', id: 'lgbtq', name: 'LGBTQ' },
+	{ title: 'Disability Tech', id: 'disability', name: 'Disability' },
+	{ title: 'BIPOC', id: 'bipoc', name: 'BIPOC' },
+	{ title: 'Marginalized Women', id: 'minority', name: 'Marginalization' },
+	{ title: 'Finding Employment', id: 'employment', name: 'Employment' }
 ];
 
 const ResourcesScreen = () => {
+	const navigation: any = useNavigation();
 	return (
 		<View style={styles.container}>
 			<FlatList
@@ -34,6 +37,7 @@ const ResourcesScreen = () => {
 									{}
 							}
 							containerStyles={(styles as any)[item.id]}
+							onPress={() => navigation.navigate(item.name)}
 						/>
 					);
 				}}

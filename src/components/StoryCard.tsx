@@ -1,47 +1,64 @@
 import { GestureResponderEvent, ImageBackground, Pressable, StyleSheet, Text, View } from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Colors } from '../constants/colors';
 import { Story } from '../models/Story';
 import { useFavouritesStore } from '../store/favourites';
 import { useNavigation } from '@react-navigation/native';
+import { Snackbar } from 'react-native-paper';
 
 interface IProps {
 	story: Story;
 }
 
 const StoryCard: React.FC<IProps> = ({ story }) => {
+	const [
+		snackbarVisible,
+		setSnackbarVisible
+	] = useState(false);
 	const { addToFavourites, removeFromFavourites, isFavourite } = useFavouritesStore();
 	const navigation: any = useNavigation();
 	const isInFavourites = isFavourite(story.id);
 	return (
-		<Pressable style={styles.container} onPress={() => navigation.navigate('StoryDetail', { story })}>
-			<ImageBackground source={{ uri: story.img_url }} style={styles.image} />
-			<View style={styles.iconContainer}>
+		<React.Fragment>
+			<Snackbar
+				style={{ zIndex: 100, backgroundColor: Colors.primary }}
+				visible={snackbarVisible}
+				onDismiss={() => setSnackbarVisible(false)}
+				duration={3000}
+			>
 				{
-					isInFavourites ? <MaterialCommunityIcons
-						color={Colors.primary}
-						size={45}
-						name="heart"
-						onPress={() => {
-							removeFromFavourites(story.id);
-							// setSnackbarVisible(true)
-						}}
-					/> :
-					<MaterialCommunityIcons
-						color={Colors.primary}
-						size={45}
-						name="heart-outline"
-						onPress={() => {
-							addToFavourites(story);
-							// setSnackbarVisible(true)
-						}}
-					/>}
-			</View>
-			<View style={styles.titleContainer}>
-				<Text style={styles.title}>{story.title}</Text>
-			</View>
-		</Pressable>
+					isInFavourites ? 'Added to favourites successfully' :
+					'Removed from favourites successfully.'}
+			</Snackbar>
+			<Pressable style={styles.container} onPress={() => navigation.navigate('StoryDetail', { story })}>
+				<ImageBackground source={{ uri: story.img_url }} style={styles.image} />
+				<View style={styles.iconContainer}>
+					{
+						isInFavourites ? <MaterialCommunityIcons
+							color={Colors.primary}
+							size={45}
+							name="heart"
+							onPress={() => {
+								removeFromFavourites(story.id);
+								setSnackbarVisible(true);
+							}}
+						/> :
+						<MaterialCommunityIcons
+							color={Colors.primary}
+							size={45}
+							name="heart-outline"
+							onPress={() => {
+								addToFavourites(story);
+								setSnackbarVisible(true);
+							}}
+						/>}
+				</View>
+				<View style={styles.titleContainer}>
+					<Text style={styles.title}>{story.title}</Text>
+				</View>
+			</Pressable>
+		</React.Fragment>
 	);
 };
 
@@ -51,7 +68,6 @@ const styles = StyleSheet.create({
 	container:
 		{
 			height: 300,
-			backgroundColor: 'red',
 			borderRadius: 10,
 			marginHorizontal: 20,
 			marginVertical: 10,

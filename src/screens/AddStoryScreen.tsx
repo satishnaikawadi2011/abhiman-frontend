@@ -10,6 +10,8 @@ import { db, storage } from '../../config';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { addDoc, collection } from 'firebase/firestore';
 import AppLoader from '../animations/AppLoader';
+import { useStoryStore } from '../store/story';
+import { Story } from '../models/Story';
 
 const storyInitialValues = {
 	fullName: '',
@@ -37,6 +39,8 @@ const AddStoryScreen: React.FC<IProps> = ({ navigation }) => {
 		setLoading
 	] = useState(false);
 
+	const { stories, setStories } = useStoryStore();
+
 	const handleSubmit = async (values: any, actions: any) => {
 		const { fullName, title, description, work, images } = values;
 		setLoading(true);
@@ -55,9 +59,19 @@ const AddStoryScreen: React.FC<IProps> = ({ navigation }) => {
 			img_url: url
 		});
 		setLoading(false);
-		actions.resetForm({});
-		console.log('Document written with ID: ', docRef.id);
-		navigation.navigate('StoriesList');
+		const newStory: Story = {
+			author: fullName,
+			title,
+			description,
+			work,
+			img_url: url,
+			id: docRef.id
+		};
+		setStories([
+			newStory,
+			...stories
+		]);
+		navigation.push('StoriesList');
 	};
 
 	if (loading) {
@@ -66,16 +80,6 @@ const AddStoryScreen: React.FC<IProps> = ({ navigation }) => {
 
 	return (
 		<View style={{ flex: 1 }}>
-			{/* <Snackbar
-				visible={!!error || snackbarVisible}
-				onDismiss={() => setSnackbarVisible(false)}
-				duration={error?5000:3000}
-			>
-				{
-					error ? error :
-					'Added your story successfully'}
-			</Snackbar> */}
-
 			<ScrollView>
 				<AppForm initialValues={storyInitialValues} validationSchema={storySchema} onSubmit={handleSubmit}>
 					<AppFormImagePicker name="images" />

@@ -1,5 +1,5 @@
 import React from 'react';
-import { createStackNavigator, StackNavigationProp } from '@react-navigation/stack';
+import { createStackNavigator, StackNavigationOptions, StackNavigationProp } from '@react-navigation/stack';
 import { defaltNavOptions } from './options/defaultNavigationOptions';
 import { RouteProp } from '@react-navigation/core';
 import ResourcesScreen from '../screens/ResourcesScreen';
@@ -30,9 +30,13 @@ export type ResourcesStackNavProps<T extends keyof ResourcesStackParamList> = {
 
 const StackNavigator = createStackNavigator<ResourcesStackParamList>();
 
+const commonOptions: StackNavigationOptions = {
+	headerShown: false
+};
+
 const ResourcesStackNavigator = () => {
 	return (
-		<StackNavigator.Navigator screenOptions={defaltNavOptions}>
+		<StackNavigator.Navigator screenOptions={{ ...defaltNavOptions, ...commonOptions }}>
 			<StackNavigator.Screen name="Resources" component={ResourcesScreen} />
 			<StackNavigator.Screen name="Voice" component={VoiceScreen} />
 			<StackNavigator.Screen name="GetPaid" component={GetPaidScreen} />
