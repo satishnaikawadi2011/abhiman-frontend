@@ -9,6 +9,7 @@ import { Provider as PaperProvider } from 'react-native-paper';
 import { useFavouritesStore } from './src/store/favourites';
 import getDataFromAsyncStorageOnStart from './src/utils/getDataFromAsyncStorageOnStart';
 import { CustomDarkTheme, CustomDefaultTheme } from './src/theme';
+import StoryCard from './src/components/StoryCard';
 
 export default function App() {
 	const [
@@ -54,7 +55,11 @@ export default function App() {
 	}
 	return (
 		<PaperProvider theme={theme}>
-			<AppNavigationContainer />
+			{/* <AppNavigationContainer /> */}
+			{/* <StoryCard
+				img_url="https://images.pexels.com/photos/7913028/pexels-photo-7913028.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+				title="Title"
+			/> */}
 		</PaperProvider>
 	);
 }
