@@ -56,10 +56,6 @@ export default function App() {
 	return (
 		<PaperProvider theme={theme}>
 			<AppNavigationContainer />
-			{/* <StoryCard
-				img_url="https://images.pexels.com/photos/7913028/pexels-photo-7913028.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-				title="Title"
-			/> */}
 		</PaperProvider>
 	);
 }
