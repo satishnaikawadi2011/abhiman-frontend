@@ -12,6 +12,7 @@ import AppLoader from '../animations/AppLoader';
 import FavouritesButton from '../components/HeaderButtons/FavouritesButton';
 import NotFound from '../animations/NotFound';
 import { Title } from 'react-native-paper';
+import ThemeToggleButton from '../components/HeaderButtons/ThemeToggleButton';
 
 const transformData = (querySnapshot: QuerySnapshot<DocumentData>): Story[] => {
 	let data: Story[] = [];
@@ -98,7 +99,13 @@ export const screenOptions:
 	if (routeName === 'StoriesList') {
 		return {
 			title: 'Abhiman',
-			headerRight: () => <FavouritesButton />
+			headerRight:
+				() => (
+					<View style={{ display: 'flex', flexDirection: 'row' }}>
+						<ThemeToggleButton />
+						<FavouritesButton />
+					</View>
+				)
 		};
 	}
 	else if (routeName === 'AddStory') {
@@ -114,6 +121,12 @@ export const screenOptions:
 	}
 	return {
 		title: 'Abhiman',
-		headerRight: () => <FavouritesButton />
+		headerRight:
+			() => (
+				<View style={{ display: 'flex', flexDirection: 'row' }}>
+					<ThemeToggleButton />
+					<FavouritesButton />
+				</View>
+			)
 	};
 };

@@ -7,7 +7,7 @@ type ThemeStore = {
 };
 
 export const useThemeStore = create<ThemeStore>((set, get) => ({
-	isDarkTheme: false,
+	isDarkTheme: true,
 	setIsDarkTheme:
 		(value) => {
 			set((state) => ({ ...state, isDarkTheme: value }));
