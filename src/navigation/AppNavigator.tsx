@@ -6,6 +6,7 @@ import HomeTabNavigator from './HomeTabNavigator';
 import StoryDetailScreen, { screenOptions as storyDetailScreenOptions } from '../screens/StoryDetailScreen';
 import FavouritesScreen from '../screens/FavouritesScreen';
 import WelcomeScreen from '../screens/WelcomeScreen';
+import { screenOptions as storiesListScreenOptions } from '../screens/StoriesListScreen';
 
 export type StoriesStackParamList = {
 	StoriesList: undefined;
@@ -23,14 +24,18 @@ const AppNavigator = () => {
 			<StoriesStackNavigator.Screen
 				name="StoriesList"
 				component={HomeTabNavigator}
-				options={{ headerShown: false }}
+				options={storiesListScreenOptions}
 			/>
 			<StoriesStackNavigator.Screen
 				name="StoryDetail"
 				component={StoryDetailScreen}
 				options={storyDetailScreenOptions}
 			/>
-			<StoriesStackNavigator.Screen name="Favourites" component={FavouritesScreen} />
+			<StoriesStackNavigator.Screen
+				name="Favourites"
+				component={FavouritesScreen}
+				options={{ title: 'Your Favourites' }}
+			/>
 		</StoriesStackNavigator.Navigator>
 	);
 };

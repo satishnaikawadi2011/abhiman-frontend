@@ -1,14 +1,17 @@
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 import React, { useEffect } from 'react';
 import { collection, DocumentData, getDocs, QuerySnapshot } from 'firebase/firestore';
-import { StackNavigationProp } from '@react-navigation/stack';
+import { StackNavigationOptions, StackNavigationProp } from '@react-navigation/stack';
 import { StoriesStackParamList } from '../navigation/AppNavigator';
-import { RouteProp } from '@react-navigation/native';
+import { getFocusedRouteNameFromRoute, RouteProp } from '@react-navigation/native';
 import { useStoryStore } from '../store/story';
 import { Story } from '../models/Story';
 import { db } from '../../config';
 import StoryCard from '../components/StoryCard';
 import AppLoader from '../animations/AppLoader';
+import FavouritesButton from '../components/HeaderButtons/FavouritesButton';
+import NotFound from '../animations/NotFound';
+import { Title } from 'react-native-paper';
 
 const transformData = (querySnapshot: QuerySnapshot<DocumentData>): Story[] => {
 	let data: Story[] = [];
@@ -54,6 +57,17 @@ const StoriesListScreen: React.FC<StoriesLisScreenProps> = ({ navigation, route 
 		return <AppLoader />;
 	}
 
+	if (stories.length === 0) {
+		return (
+			<View style={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+				<View>
+					<NotFound />
+					<Title style={{ textAlign: 'center' }}>Stories not available</Title>
+				</View>
+			</View>
+		);
+	}
+
 	return (
 		<FlatList
 			keyExtractor={(item) => item.id}
@@ -70,3 +84,36 @@ const StoriesListScreen: React.FC<StoriesLisScreenProps> = ({ navigation, route 
 export default StoriesListScreen;
 
 const styles = StyleSheet.create({});
+
+export const screenOptions:
+	| StackNavigationOptions
+	| ((
+			props: {
+				route: RouteProp<StoriesStackParamList, 'StoriesList'>;
+				navigation: any;
+			}
+		) => StackNavigationOptions)
+	| undefined = ({ route }) => {
+	const routeName = getFocusedRouteNameFromRoute(route);
+	if (routeName === 'StoriesList') {
+		return {
+			title: 'Abhiman',
+			headerRight: () => <FavouritesButton />
+		};
+	}
+	else if (routeName === 'AddStory') {
+		return {
+			title: 'Share Your Story'
+		};
+	}
+	else if (routeName === 'Resources') {
+		return {
+			// title: 'Resources'
+			headerShown: false
+		};
+	}
+	return {
+		title: 'Abhiman',
+		headerRight: () => <FavouritesButton />
+	};
+};

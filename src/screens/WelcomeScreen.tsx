@@ -20,7 +20,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ navigation }) => {
 			<View style={{ marginHorizontal: 20, position: 'absolute', bottom: 30, width: '90%' }}>
 				<AppButton
 					title="Get Started"
-					onPress={() => navigation.navigate('StoriesList')}
+					onPress={() => navigation.replace('StoriesList')}
 					bgColor={Colors.accent}
 				/>
 			</View>

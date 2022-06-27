@@ -7,6 +7,7 @@ import AddStoryScreen from '../screens/AddStoryScreen';
 import CustomAddStoryTabButton from '../components/navigation/CustomAddStoryTabButton';
 import ResourcesStackNavigator from './ResourcesStackNavigator';
 import { defaltNavOptions } from './options/defaultNavigationOptions';
+import { screenOptions as storiesListScreenOptions } from '../screens/StoriesListScreen';
 
 const TabNavigator = createBottomTabNavigator();
 
@@ -16,6 +17,7 @@ const HomeTabNavigator = () => {
 			screenOptions={{
 				tabBarActiveTintColor: Colors.primary,
 				tabBarHideOnKeyboard: true,
+				headerShown: false,
 				...defaltNavOptions
 			}}
 		>

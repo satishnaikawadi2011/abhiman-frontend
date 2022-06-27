@@ -5,18 +5,20 @@ import { useTheme } from '@react-navigation/native';
 
 interface Props {}
 
-const AppLoader: React.FC<Props> = ({}) => {
+const Favourites: React.FC<Props> = ({}) => {
 	const theme = useTheme();
 	return (
 		<LottieView
-			style={{ backgroundColor: theme.colors.background }}
-			source={require('../../assets/animations/loader.json')}
+			style={{ backgroundColor: theme.colors.background, height: 400 }}
+			source={require('../../assets/animations/favourites.json')}
 			autoPlay
 			loop={true}
+			autoSize
+			// speed={0.5}
 		/>
 	);
 };
 
-export default AppLoader;
+export default Favourites;
 
 const styles = StyleSheet.create({});
